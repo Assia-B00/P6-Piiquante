@@ -1,7 +1,7 @@
-const Thing = require('../models/thing');
+const Thing = require('../models/Sauce');
 const fs = require('fs');
 
-exports.createThing = (req, res, next) => {
+exports.createSauce = (req, res, next) => {
   const thingObject = JSON.parse(req.body.thing);
   delete thingObject._id;
   delete thingObject._userId;
@@ -16,7 +16,7 @@ exports.createThing = (req, res, next) => {
     .catch(error => { res.status(400).json({ error }) })
 };
 
-exports.createThing = (req, res, next) => {
+/*exports.createThing = (req, res, next) => {
   const thing = new Thing({
     title: req.body.title,
     description: req.body.description,
@@ -38,8 +38,8 @@ exports.createThing = (req, res, next) => {
     }
   );
 };
-
-exports.getOneThing = (req, res, next) => {
+*/
+exports.getOneSauce = (req, res, next) => {
   Thing.findOne({
     _id: req.params.id
   }).then(
@@ -55,7 +55,7 @@ exports.getOneThing = (req, res, next) => {
   );
 };
 
-exports.modifyThing = (req, res, next) => {
+exports.modifySauce = (req, res, next) => {
   const thingObject = req.file ? {
     ...JSON.parse(req.body.thing),
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
@@ -77,7 +77,7 @@ exports.modifyThing = (req, res, next) => {
     });
 };
 
-exports.deleteThing = (req, res, next) => {
+exports.deleteSauce = (req, res, next) => {
   Thing.findOne({ _id: req.params.id })
     .then(thing => {
       if (thing.userId != req.auth.userId) {
@@ -96,7 +96,7 @@ exports.deleteThing = (req, res, next) => {
     });
 };
 
-exports.getAllStuff = (req, res, next) => {
+exports.getAllSauces = (req, res, next) => {
   Thing.find().then(
     (things) => {
       res.status(200).json(things);
