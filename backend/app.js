@@ -9,7 +9,7 @@ const path = require('path');
 
 const app = express();
 
-
+mongoose.connect('mongodb+srv://assia:mongoose.91@cluster0.cf7o2nl.mongodb.net/?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
