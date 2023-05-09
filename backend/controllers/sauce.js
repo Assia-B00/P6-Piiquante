@@ -93,6 +93,5 @@ exports.likeDislikeSauce = (req, res, next) => {
       break;
 
     default:
-      console.log(error);
   }
 }
