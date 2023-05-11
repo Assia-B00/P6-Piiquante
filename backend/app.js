@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 const path = require('path');
-
+require('dotenv').config;
 const app = express();
 
-mongoose.connect('mongodb+srv://assia:mongoose.91@cluster0.cf7o2nl.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(process.env.DB_CONNECT,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
